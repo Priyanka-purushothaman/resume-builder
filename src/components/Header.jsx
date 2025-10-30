@@ -23,7 +23,8 @@ function Header() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <img width={'30px'} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBbLGHgf2Ni6GD7e9Ql-riTCq8trs-R7PBvGgV02V6atAwFXiQ7l-2GvRbYpDr2UmcI8s&usqp=CAU" alt="logo" />
+            <img width={'50px'} src="https://www.thegreatapps.com/application/upload/Apps/2019/07/resume-maker-app-147.png" alt="logo" />
+           
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to={'/'} className='text-light text-decoration-none'>rBuilder</Link>

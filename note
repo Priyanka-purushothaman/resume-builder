@@ -456,14 +456,12 @@
     1. front-end JavaScript library.
     2. is a tool for building UI components.
     3. Features of REACT
-        - Virtual DOM : React creates a VIRTUAL DOM in memory. Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory,
-                          where it does all the necessary manipulating, before making the changes in the browser DOM.
+        - Virtual DOM : React creates a VIRTUAL DOM in memory. Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM.
         - UI Components : Components are resuable pieces of codes.
         - JSX : JavaScript XML - JS extension for writing HTML codes, used to display contents in browser
             - JSX consists of JSX elements
             - Rules of JSX
-                - Every jsx elements must be inside a single tag. That tag can be container tags (div,section,article...) or react fragments,
-                        nameless tag are react fragments ( <></> )
+                - Every jsx elements must be inside a single tag. That tag can be container tags (div,section,article...) or react fragments, nameless tag are react fragments ( <></> )
                 - All Jsx tag must have closing tag : 
                     - tag with contents : <tag>content</tag>
                     - tag without contents :<tag></tag> or  self closing tags ( <tag/> )
@@ -482,8 +480,7 @@
             - .gitignore : used to mention files or folders to be ignored in git 
             - eslint.config.js : configuaration file for js code quality check 
             - index.html : entry point of app 
-            - node_modules folder : holding copies of packages installed in the project, so that project can use package from node_modules instead 
-                           of internet, inorder  to create node_modules in a project using command : npm install
+            - node_modules folder : holding copies of packages installed in the project, so that project can use package from node_modules instead of internet, inorder  to create node_modules in a project using command : npm install
             - public folder : used to hold items that can accessed from any where in the project 
             - src folder : is the folder where react app logic is given
                 - main.jsx : used to display react app in browser
@@ -494,56 +491,63 @@
                 - asset folder : used to hold image, video... of a project
     5. React app is a collection of components and are arranged in tree Structure, main root of react app is 'App' component
     6. React component : Set of reusable code for creating UI of app
+        - Life cycle Methods of React component
+            - 1. Mounting Phase : Putting jsx into DOM
+                - constructor()
+                - getDerivedStateFromProps()
+                - render()
+                - componentDidMount()
+            - 2. Updating Phase : when component get updated
+                - getDerivedStateFromProps()
+                - shouldComponentUpdate()
+                - render()
+                - getShapshotBeforeUpdate()
+                - componentDidUpdate()
+            - 3. Unmounting phase : removing from DOM
+                - componentWillUnmount()
         - To create component : create a jsx/js file with file name startwith 'capital letter'
         - Can be of 2 types
             - Functional based / stateless component : uses js pure function and it return jsx code
                 - A Pure Function is a function (a block of code) that always returns the same result if the same arguments are passed.
-            - Class based / statefull component : uses js class
-        -Life Cycle Method of React component
-            -1.Mounting Pahes : Putting jsx into DOM
-            -2.Updating phase : when component get update
-            -3.Unmounting phase : removing from Dom
-            -
-        -Diffrence between class & function based component
-
-            Class Based component                               Functional based component
-            -----------------------------------------------------------------------------------------------------------------------------------------------
-            1.using class to create render method to return       1.Using js pure function, it return jsx
-               jsx
-            2.Statefull Components                                2.Stateless component
-            3.Hooks not needed                                    3.Hooks needed
-            4.Need constructor
-            5.Lifecycle method are avilable 
+            - Class based / statefull component : uses js class, it inherit react component 
+        - Difference between Class & function based component
+                Class Based component                       Functional based component
+            ----------------------------------------------------------------------------------
+            1. using class to create render method to       1. Using js pure functions, it retun jsx
+            retun jsx
+            2. Statefull component                          2. Stateless component
+            3. Hooks not needed                             3. Hooks needed
+            4. Need constructor                             4. No need constructor
+            5. Lifecycle method are available               5. LC methods not available
     7. Styling React component
         - Using Inline CSS : using style attribute. and style as js object
             - syntax : style={{property:value,...}}
         - Using External CSS : add External css file with jsx file using import Statement
         - Using CSS module file :  file with file extension as .module.css is known as css module file
-    8. Handling list of items in JSX : use 'map' function to get each item from an array in jsx, use parenthesis for callback body, 
-          'key' attribute used to uniquely identify elements in list
-    9. Conditional Rendering : Based on component can control visibility of jsx elements, use js Conditional Statements / ternary Operators in JSX
+    8. Handling list of items in JSX : use 'map' function to get each item from an array in jsx, use parenthesis for callback body, 'key' attribute used to uniquely identify elements in list
+    9. Conditional Rendering : Based on based on component can control visibility of jsx elements, use js Conditional Statements / ternary Operators in JSX
     10. Event Handling in React : event={function-call}
         - function call with no arguments : event={function-name}
         - function call with arguments : event={()=>function-name(arguments)}
         - function call with argument as event : event={(event)=>function-name(event)}
     11. React State : is a variable used to store data, when state changes DOM also will changed
         - In class based component : use state property , can only assign object. To update state value use setState({key:updated-value})
-    12. React Hooks : Is function for giving react component features to functional component
+    12. React Hooks : Is function for provide react component features(life cycle method & state) to functional component
         - Rules for using Hooks in functional component
             1. Import hook
             2. used in top level of component
             3. Hooks cannot be Conditional
         - Common Predefined/built in Hooks
-            - useState(initial-value) : used to create state in functional component, it can store any type of data, useState hooks returns an array ,
-                       its 1st argument will give you the state, 2nd argument is a function-name used to update the state
-            - useRef() : return object with one key as 'current', use ref attribute to jex elements, current key has that jsx element
-            -useeffect(callback,dependency): used to provide side effects to component
-                -callback : is a function used to define side effects
-                -dependency : it determine when side effects should be applied in component
-                   -no argument : side effects will apply only at the creation 
-    
-            13. Props : used to share data from parent to child component, props is the argument of functional component, props is an object where its key is from
-                    its child selector property
+            - useState(initial-value) : used to create state in functional component, it can store any type of data, useState hooks returns an array , its 1st argument will give you the state, 2nd argument is a function-name used to update the state
+            - useRef() : return object with one key as 'current', use ref attribute to jex elements, current key has that jsx element, inorder to prevent unwanted rending
+            - useEffect(callback,dependecy) : used to provide side effects to component
+                - callback : is a function used to define side effects
+                - dependency : it decide when side efects should be applied in component
+                    - no argument : side effects will apply all time in component
+                    - [] / empty array : side effects will apply only at the creation/loading of component in browser
+                    - [props/state/variable] : side effects will apply not only at the component creation but also changes of the array items(props,state/variable)
+        - Custom Hooks : Its should a js file and it filename is starts with 'use' keyword. Hook is a function , it must return data
+    13. Props : used to share data from parent to child component, props is the argument of functional component, props is an object where its key is from its child selector property
     14. Routing in React : React- Router Dom 
         - Setting path/url for component
         - use react-router-dom package : npm i react-router-dom
@@ -554,6 +558,25 @@
     15. Form Handling in React : store data inputed via form in component
         - Controlled Components : user input data will be stored in component state, using 'useState' hook to store data
         - Uncontrolled component : user input data will be fetched from real dom, here tag can directly acccess via 'useRef' hook
+    16. Handling API In react
+        - fetch method
+        - axios library
+
+
+            PROJECT CREATION USING REACT
+        ----------------------------------------
+
+        1. Using vite create react project : npm create vite@latest project-name -- --template react
+        2. Remove unwanted codes from project (clear css files, app component file unwanted data)
+        3. Install or link libraries used to create react project (link bootstrap , fonts, install material ui,react-icons, react-router-dom,)
+        4. Create page folder inside src folder, create components for pages inside folder
+        5. Create components folder inside src folder, component for part of pages
+        6. Set up path for component in pages folder 
+        7. Start design pages
+
+
+
+
 
 
 
