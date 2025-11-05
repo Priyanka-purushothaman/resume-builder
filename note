@@ -425,6 +425,7 @@
         - ex: https://jsonplaceholder.typicode.com/posts/1
         - URI : Uniform Resource Indentifier : ex: posts
         - Parameters : are dynamically changed values in a url
+        
     14. API Call in JAVASCRIPT
         - Using 'XMLHttpRequest'/ 'XHR' Class api call - AJAX Call
             - AJAX : Asynchronous JAVASCRIPT XML
@@ -561,6 +562,9 @@
     16. Handling API In react
         - fetch method
         - axios library
+
+    17.Data sharing React
+    
 
 
             PROJECT CREATION USING REACT

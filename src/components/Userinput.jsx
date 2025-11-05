@@ -5,42 +5,28 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
+import TextField  from '@mui/material/TextField';
 import { MdClose } from "react-icons/md";
+import { addResumeAPI } from '../service/allAPI'
+import { useNavigate } from 'react-router-dom';
+
 
 const steps = ['Basic Information', 'Contact Details', 'Educational Detail', 'Work EXperience', 'Skills & Certication', 'Review & Submit'];
-function Userinput() {
-  const skillsSuggestionArray = ['NODE JS', 'ANGULAR', 'REACT', 'JAVASCRIPT', 'MONGO DB', 'C', 'HTML', 'PYTHON','JAVA','C++']
+
+function Userinput({ resumeDetail, setResumeDetails }) {
+  const skillsSuggestionArray = ['NODE JS', 'ANGULAR', 'REACT', 'JAVASCRIPT', 'MONGO DB', 'C', 'HTML', 'PYTHON', 'JAVA', 'C++']
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
 
-  // create  state for strong resume
+  //reference to skill input tag
+  const skillRef = React.useRef();
 
-  const [resumeDetail, setResumeDetails] = React.useState({
-    username: "",
-    jobTitle: "",
-    location: "",
-    email: "",
-    mobile: "",
-    github: "",
-    linkedin: "",
-    protfolio: "",
-    course: "",
-    college: "",
-    university: "",
-    passoutYear: "",
-    jobType: "",
-    company: "",
-    companyLocation: "",
-    duration: "",
-    userSkills: [],
-    summary: "",
-  })
+  // to navigate
+  const navigate = useNavigate()
 
-const skillRef = React.useRef();
-  
+
   console.log(resumeDetail);
 
 
@@ -97,8 +83,8 @@ const skillRef = React.useRef();
     }
   }
 
-  const removeSkill = (skill)=>{
-    setResumeDetails({...resumeDetail,userSkills:resumeDetail.userSkills.filter(item=>item!=skill)})
+  const removeSkill = (skill) => {
+    setResumeDetails({ ...resumeDetail, userSkills: resumeDetail.userSkills.filter(item => item != skill) })
   }
 
 
@@ -153,47 +139,73 @@ const skillRef = React.useRef();
 
       )
       case 4: return (
-      <div>
-        <h3>Skills</h3>
-        <div className='d-flex align-items-center justify-content-between p-3 w-100'>
-        <input ref={skillRef} placeholder='Add Skill' type="text" className='form-control' />
-        <Button onClick={() => addSkill(skillRef.current.value)}  variant='text'>Add</Button>
-        </div>
-        <h5>Suggestions:</h5>
-        <div className='d-flex flex-wrap justify-content-between'>
-             {
-                skillsSuggestionArray.map((item, index) => (
-                  <Button onClick={()=>addSkill(item)} key={index} variant='outlined' className='m-1'>{item}</Button>
+        <div>
+          <h3 className='mt-4'>Skills</h3>
+          <div className='d-flex align-items-center justify-content-between p-3 w-100'>
+            <input ref={skillRef} placeholder='Add Skill' type="text" className='form-control' />
+            <Button onClick={() => addSkill(skillRef.current.value)} variant='text'>Add</Button>
+          </div>
+          <h5 className='fs-4 mt-2'>Suggestions:</h5>
+          <div className='d-flex flex-wrap justify-content-between'>
+            {
+              skillsSuggestionArray.map((item, index) => (
+                <Button onClick={() => addSkill(item)} key={index} variant='outlined' className='m-1'>{item}</Button>
 
-               ))
-              } 
+              ))
+            }
+          </div>
+          <h4 className='mt-4'>Added Skills : </h4>
+          <div className='d-flex flex-wrap justify-content-between my-3'>
+            {
+              resumeDetail.userSkills?.length > 0 ?
+                resumeDetail.userSkills?.map((skill, index) => (
+                  <Button key={index} variant='contained' className='m-1' >{skill} <MdClose onClick={() => removeSkill(skill)} className='ms-2' /></Button>
+
+                ))
+                :
+                <p className='fw-bolder'>No skills are added yet!!!</p>
+            }
+          </div>
         </div>
-            <h4>Added Skills : </h4>
-             <div className='d-flex flex-wrap justify-content-between my-3'>
-             {
-             resumeDetail.userSkills?.length>0?
-              resumeDetail.userSkills?.map((skill,index)=>(
-          <Button variant='contained' className='m-1' >{skill} <MdClose onClick={()=>removeSkill(skill)} className='ms-2' /></Button>
-          
-           ))
-           :
-          <p className='fw-bolder'>No skills are added yet!!!</p>
-           }
-        </div>
-      </div>
 
       )
       case 5: return (
         <div>
           <h3>Summary</h3>
           <div className="p-3 row">
-            <TextField  id="standard-basic-summary" label="Write a short summary of yourself" onChange={e => setResumeDetails({ ...resumeDetail, summary: e.target.value })} variant="standard" multiline rows={7} defaultValue={'Enthusiastic and detail-oriented MEARN Stack Developer with a strong foundation in MongoDB, Express.js, Angular, React, and Node.js. Skilled in building responsive web applications, developing RESTful APIs, and working with modern front-end frameworks. Passionate about learning new technologies, writing clean code, and solving real-world problems through efficient web solutions. Eager to contribute to a dynamic development team and grow as a full-stack developer.'} />
+            <TextField id="standard-basic-summary" label="Write a short summary of yourself" onChange={e => setResumeDetails({ ...resumeDetail, summary: e.target.value })} variant="standard" multiline rows={7} defaultValue={'Enthusiastic and detail-oriented MEARN Stack Developer with a strong foundation in MongoDB, Express.js, Angular, React, and Node.js. Skilled in building responsive web applications, developing RESTful APIs, and working with modern front-end frameworks. Passionate about learning new technologies, writing clean code, and solving real-world problems through efficient web solutions. Eager to contribute to a dynamic development team and grow as a full-stack developer.'} />
 
           </div>
         </div>
       )
     }
   }
+
+  const handleAddResume = async () => {
+    const { username, jobTitle, location } = resumeDetail
+    if (!username && !jobTitle && !location) {
+      alert("Please fill the form Completely")
+
+    } else {
+      //api
+      console.log("Api Call");
+      try {
+        const result = await addResumeAPI(resumeDetail)
+        console.log(result);
+        if (result.status == 201) {
+          alert("Resume added successfully!!!")
+          const {id} = result.data
+          //success redirect view page
+          navigate(`/resume/${id}/view`)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+  }
+
+
 
 
   return (
@@ -249,9 +261,13 @@ const skillRef = React.useRef();
                 Skip
               </Button>
             )}
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
+            {activeStep === steps.length - 1 ?
+              <Button onClick={handleAddResume}>Finish</Button>
+              :
+              <Button onClick={handleNext}>Next</Button>
+            }
+
+
           </Box>
         </React.Fragment>
       )}
