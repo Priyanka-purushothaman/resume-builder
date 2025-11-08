@@ -8,7 +8,7 @@ import { RiFacebookCircleLine } from "react-icons/ri";
 
 function Footer() {
   return (
-    <div style={{height:'300px',backgroundColor:'purple',color:'white'}}
+    <div style={{height:'280px',backgroundColor:'purple',color:'white'}}
      className='d-flex justify-content-center align-items-center p-5 flex-column'>
 <h1>Contact Us </h1>
 <h5 className='fw-bolder'><IoMailOpenSharp className='me-2' />resumebuilder@gmail.com</h5>

@@ -3,7 +3,7 @@ import React from 'react'
 
 function Preview({resumeDetail}) {
   return (
-    <div style={{ margin: '70px' }} className='shadow p-5 w-100 text-center'>
+    <div style={{ margin: '260px',minHeight:'100vh'}} className='shadow p-5 mt-1 w-75 text-center my-5'>
       <h3>{resumeDetail?.username}</h3>
       <h5>{resumeDetail?.jobTitle}</h5>
       <h6><span className='mx-2'>{resumeDetail?.location}</span>|<span className='mx-2'>{resumeDetail?.email}</span>|<span className='mx-2'>{resumeDetail?.mobile}</span></h6>

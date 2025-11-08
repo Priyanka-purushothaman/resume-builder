@@ -93,7 +93,7 @@ function Userinput({ resumeDetail, setResumeDetails }) {
       case 0: return (
 
         <Box sx={{ width: 500, maxWidth: '100%' }}>
-          <h3><h3>Personal Details</h3></h3>
+          <h3>Personal Details</h3>
 
           <TextField value={resumeDetail.username} fullWidth label="Full Name" onChange={e => setResumeDetails({ ...resumeDetail, username: e.target.value })} id="standard-basic-name" variant="standard" />
           <TextField value={resumeDetail.jobTitle} fullWidth label="Job tiltle" onChange={e => setResumeDetails({ ...resumeDetail, jobTitle: e.target.value })} id="standard-basic-job" variant="standard" />

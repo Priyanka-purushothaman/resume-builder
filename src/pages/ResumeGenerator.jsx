@@ -9,9 +9,9 @@ function ResumeGenerator() {
     <div className='container-fluid'>
       <h1 className='text-center mt-5 '>Create a Job-Winining Resume</h1>
 
- <div  className='row justify-content-center align-item mt-5'>
+ <div style={{marginRight:'100px'}}  className='row justify-content-center align-item mt-5'>
 <div className="col-md-1"></div>
-<div className="col-md-4 border rounded shadow p-5 text-center">
+<div className="col-md-5 border rounded shadow p-5 text-center">
     <FaFile className='text-primary fs-4 mt-2' />
 <h3 className='mt-4'>Add your informattion</h3>
 <p>add pre-written example to each section</p>
@@ -19,7 +19,7 @@ function ResumeGenerator() {
 </div>
 <div className="col-md-1"></div>
 
-<div className="col-md-4 border rounded shadow text-center p-5">
+<div className="col-md-5 border rounded shadow text-center p-5">
   <MdFileDownload className='text-danger fs-2 mt-2'/>
 <h3 className='mt-4'>Download your Resume</h3>
 <p>Download and start applying</p>

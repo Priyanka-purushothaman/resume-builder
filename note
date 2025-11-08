@@ -547,7 +547,10 @@
                     - no argument : side effects will apply all time in component
                     - [] / empty array : side effects will apply only at the creation/loading of component in browser
                     - [props/state/variable] : side effects will apply not only at the component creation but also changes of the array items(props,state/variable)
-        - Custom Hooks : Its should a js file and it filename is starts with 'use' keyword. Hook is a function , it must return data
+                -useNavigate():return a function which capable of redirecting one page to another, to use call the return function and 
+                     pass argument as url  
+                -useParam():return an object with dynamic values of component url
+            - Custom Hooks : Its should a js file and it filename is starts with 'use' keyword. Hook is a function , it must return data
     13. Props : used to share data from parent to child component, props is the argument of functional component, props is an object where its key is from its child selector property
     14. Routing in React : React- Router Dom 
         - Setting path/url for component
