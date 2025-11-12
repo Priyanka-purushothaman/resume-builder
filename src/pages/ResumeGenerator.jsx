@@ -14,7 +14,7 @@ function ResumeGenerator() {
 <div className="col-md-5 border rounded shadow p-5 text-center">
     <FaFile className='text-primary fs-4 mt-2' />
 <h3 className='mt-4'>Add your informattion</h3>
-<p>add pre-written example to each section</p>
+<p>Add pre-written example to each section</p>
   <h5>Step 1</h5>
 </div>
 <div className="col-md-1"></div>
